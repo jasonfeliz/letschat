@@ -1,3 +1,5 @@
+require('webpack-hot-middleware/client')
 
-require('../index.html')
+
 require('../assets/scripts/app.js')
+require('../assets/styles/styles.css')
