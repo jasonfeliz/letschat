@@ -1,6 +1,7 @@
 const express = require('express')
 const webpack = require('webpack')
 const bodyParser = require('body-parser')
+const mongoose = require('mongoose')
 const path = require('path')
 const port = 3000
 
@@ -13,6 +14,15 @@ app.set('view engine', 'ejs');
 //require routes file
 const userRoutes = require('../../app/routes/user_routes.js')
 
+const auth = require('../../config/auth.js')
+
+//setup db connects
+const db = require('../../config/db.js')
+
+mongoose.Promise = global.promise
+mongoose.connect(db,{
+  useNew
+})
 
 const config = require('../../config/webpack.dev.js')
 const compiler = webpack(config)
@@ -40,6 +50,8 @@ app.get('*', function (req, res) {
   res.render('404')
 })
 
+
+// app.use(auth)
 // add `bodyParser` middleware which will parse JSON requests into
 // JS objects before they reach the route files.
 // The method `.use` sets up middleware for the Express application
