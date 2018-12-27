@@ -1,3 +1,15 @@
  body{
    background-color: lavender;
  }
+.container{
+  max-width: 960px;
+  width: 85%;
+  margin: 0 auto;
+
+}
+.chat-canvas {
+  height: 500px;
+  width: 75%;
+  margin: 0 auto;
+  border: solid 1px #000;
+}

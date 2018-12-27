@@ -1,8 +1,39 @@
 <% let title = "Sign In | Sign Up" %>
 <% include partials/header.ejs %>
 
-<h1>Lets Chat</h1>
-<h2>I want to chat</h2>
-<p id="something">Hello World, I really want to chat</p>
+
+
+<div class="wrapper">
+  <h1>Lets Chat</h1>
+  <div class="container">
+      <div class="chat-canvas" id="chat-canvas">
+        <ul id="chat-list">
+          <li>
+              <div class="">
+                <span>bruceWayne: </span> <span>Hello All!</span>  <span>X</span>
+              </div>
+          </li>
+          <li>
+              <div class="">
+                <span>me: </span> <span>Hows everyone doing?</span> <span>X</span>
+              </div>
+          </li>
+        </ul>
+      </div>
+      <div class="online-list-container" id="list-canvas">
+
+      </div>
+      <div class="chat-form" id="chat-form-canvas">
+        <form id="chat-form">
+          <input type="text" name="chat-body" placeholder="What's on your mind?">
+          <input type="submit" name="" value="Send">
+        </form>
+
+      </div>
+  </div>
+</div>
+
+
+
 
 <% include partials/footer.ejs %>
