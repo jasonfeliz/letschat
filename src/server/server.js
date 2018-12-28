@@ -19,11 +19,12 @@ const auth = require('../../config/auth.js')
 //setup db connects
 const db = require('../../config/db.js')
 
-mongoose.Promise = global.promise
+mongoose.Promise = global.Promise
 mongoose.connect(db,{
-  useNew
+  useNewUrlParser: true
 })
 
+//webpack config middlewaree  stuff
 const config = require('../../config/webpack.dev.js')
 const compiler = webpack(config)
 const webpackDevMiddleware = require('webpack-dev-middleware')(
@@ -31,10 +32,11 @@ const webpackDevMiddleware = require('webpack-dev-middleware')(
   config.devServer
 )
 const webpackHotMiddleware = require('webpack-hot-middleware')(compiler)
-
-
 app.use(webpackDevMiddleware)
 app.use(webpackHotMiddleware)
+
+//allow static files in dist folder to be served.
+//in this case, it would be main-bundle.js which bundles up css/html/js files
 app.use(express.static("dist"))
 
 
@@ -51,7 +53,7 @@ app.get('*', function (req, res) {
 })
 
 
-// app.use(auth)
+app.use(auth)
 // add `bodyParser` middleware which will parse JSON requests into
 // JS objects before they reach the route files.
 // The method `.use` sets up middleware for the Express application
@@ -59,7 +61,7 @@ app.use(bodyParser.json())
 // this parses requests sent by `$.ajax`, which use a different content type
 app.use(bodyParser.urlencoded({ extended: true }))
 
-// app.use(userRoutes)
+app.use(userRoutes)
 
 
 //server

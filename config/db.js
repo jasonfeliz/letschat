@@ -3,10 +3,10 @@
 const baseName = 'chatDB'
 
 const database = {
-  development: `mongodb://http:localhost/${baseName}-development`,
-  test: `mongodb://http:localhost/${baseName}-test`
+  development: `mongodb://localhost/${baseName}-development`,
+  test: `mongodb://localhost/${baseName}-test`
 }
 
-const localDb = process.env.TESTENV ? database.test : database.development
+const localDb = database.development
 
 module.exports = localDb
