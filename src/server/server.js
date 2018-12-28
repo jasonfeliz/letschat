@@ -13,7 +13,7 @@ app.set('view engine', 'ejs');
 
 //require routes file
 const userRoutes = require('../../app/routes/user_routes.js')
-
+const chatRoutes = require('../../app/routes/chat_routes.js')
 const auth = require('../../config/auth.js')
 
 //setup db connects
@@ -38,7 +38,16 @@ app.use(webpackHotMiddleware)
 //allow static files in dist folder to be served.
 //in this case, it would be main-bundle.js which bundles up css/html/js files
 app.use(express.static("dist"))
+app.use(auth)
+// add `bodyParser` middleware which will parse JSON requests into
+// JS objects before they reach the route files.
+// The method `.use` sets up middleware for the Express application
+app.use(bodyParser.json())
+// this parses requests sent by `$.ajax`, which use a different content type
+app.use(bodyParser.urlencoded({ extended: true }))
 
+app.use(userRoutes)
+app.use(chatRoutes)
 
 app.get('/',function(req,res){
   res.render('index')
@@ -51,19 +60,6 @@ app.get('/about',function(req,res){
 app.get('*', function (req, res) {
   res.render('404')
 })
-
-
-app.use(auth)
-// add `bodyParser` middleware which will parse JSON requests into
-// JS objects before they reach the route files.
-// The method `.use` sets up middleware for the Express application
-app.use(bodyParser.json())
-// this parses requests sent by `$.ajax`, which use a different content type
-app.use(bodyParser.urlencoded({ extended: true }))
-
-app.use(userRoutes)
-
-
 //server
 server = app.listen(port, function(){
   console.log(`you have entered the twilight zone ${port}`)

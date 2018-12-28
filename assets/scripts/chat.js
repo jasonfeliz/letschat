@@ -10,11 +10,14 @@ module.exports = function(){
   $('#chat-form').submit(function(event){
     event.preventDefault()
     const message = $('input[name="chat-body"]').val()
-    api.sendMessageApi(message)
-    // .then(function(){
-    //     socket.emit('send-message',{ message: message } )
-    // })
-    // .catch(console.error)
+    const dataObj = {
+      "body":message
+    }
+    api.sendMessageApi(dataObj)
+    .then(function(data){
+        socket.emit('send-message',{ message: message, } )
+    })
+    .catch(console.error)
 
   })
 
