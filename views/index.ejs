@@ -6,30 +6,22 @@
 <div class="wrapper">
   <h1>Lets Chat</h1>
   <div class="container">
-      <div class="chat-canvas" id="chat-canvas">
-        <ul id="chat-list">
-          <li>
-              <div class="">
-                <span>bruceWayne: </span> <span>Hello All!</span>  <span>X</span>
-              </div>
-          </li>
-          <li>
-              <div class="">
-                <span>me: </span> <span>Hows everyone doing?</span> <span>X</span>
-              </div>
-          </li>
-        </ul>
-      </div>
-      <div class="online-list-container" id="list-canvas">
-
-      </div>
-      <div class="chat-form" id="chat-form-canvas">
-        <form id="chat-form">
-          <input type="text" name="chat-body" placeholder="What's on your mind?">
-          <input type="submit" name="" value="Send">
+    <div class="">
+        <form id="sign-up">
+          <input type="text" name="username" value="" placeholder="Enter Username">
+          <input type="password" name="password" value="" placeholder="Create Password">
+          <button type="submit">Sign Up</button>
         </form>
+    </div>
+    <div class="">
+      <form action="/sign-in" method="POST">
+        <input type="text" name="username" value="" placeholder="Enter Username">
+        <input type="password" name="password" value="" placeholder="Enter Password">
+        <button type="submit">Sign In</button>
+      </form>
+    </div>
 
-      </div>
+    <div id="auth-messages"></div>
   </div>
 </div>
 

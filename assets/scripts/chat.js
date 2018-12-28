@@ -15,7 +15,7 @@ module.exports = function(){
     }
     api.sendMessageApi(dataObj)
     .then(function(data){
-        socket.emit('send-message',{ message: message, } )
+        socket.emit('send-message',{ message: data.chat.body, username:data.username } )
     })
     .catch(console.error)
 

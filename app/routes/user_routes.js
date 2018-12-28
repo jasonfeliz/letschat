@@ -13,7 +13,7 @@ const User = require('../models/user.js')
 // passing this as a second argument to `router.<verb>` will make it
 // so that a token MUST be passed for that route to be available
 // it will also set `res.user`
-const authenticateRequest = passport.authenticate('local', { session: false })
+const authenticateRequest = passport.authenticate('local', {failureRedirect: '/' })
 const requireToken = passport.authenticate('bearer', { session: false })
 // instantiate a router (mini app that only handles routes)
 const router = express.Router()
@@ -36,7 +36,6 @@ router.post('/sign-up',function(req, res){
       //then return the object to be created in the db
       .then(function(hash){
         return {
-          email: credentials.email,
           username: credentials.username,
           hashedPassword: hash,
         }
@@ -56,22 +55,15 @@ router.post('/sign-in', authenticateRequest, function(req, res){
     const user = req.user
     const pw = req.body.password
     Promise.resolve(user)
-    //compare hashed pword to incoming pword
-      .then(function(credentials){
-        return bcrypt.compare(pw, user.hashedPassword)
-      })
-      .then(function(matchedPassword){
-        if(matchedPassword){
-          //if matched password, set token to a 16 byte random hex string
+      .then(function(){
           const token = crypto.randomBytes(16).toString('hex')
           user.token = token
           return user.save()
-        }else{
-          res.sendStatus(401)
-        }
       })
       .then(user => {
-        res.status(201).json({ user: user.toObject() })
+        req.login(user, function(){
+          res.redirect(`home`)
+        })
       })
 })
 

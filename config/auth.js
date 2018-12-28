@@ -12,7 +12,6 @@ const bearerStrategy = new BearerStrategy(
   function(token, done){
     User.findOne({token: token}, function(err, user){
       if(err){ return done(err)}
-
       return done(null, user, { scope: 'all' })
     })
   }
@@ -20,11 +19,16 @@ const bearerStrategy = new BearerStrategy(
 
 //create local strategy which validates incoming username and password
 const localStrategy = new LocalStrategy(
-  { passReqToCallback: true },
-  function(req,username,password,done){
-    User.findOne( {username:req.body.username}, function(err, user){
+  function(username,password,done){
+    User.findOne( {username:username}, function(err, user){
       if(!user){return done(null, false)}
-      return done(null, user)
+
+      bcrypt.compare(password, user.hashedPassword, function(err,isValid){
+        if(err){ return done(err)}
+        if(!isValid){ return done(null,false)}
+        return done(null, user)
+      })
+
     })
   }
 )
