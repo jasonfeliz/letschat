@@ -9,7 +9,7 @@ const bcryptSaltRounds = 10
 
 
 const User = require('../models/user.js')
-
+const store = require('../../assets/scripts/store.js')
 // passing this as a second argument to `router.<verb>` will make it
 // so that a token MUST be passed for that route to be available
 // it will also set `res.user`

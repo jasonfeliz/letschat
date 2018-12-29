@@ -5,12 +5,13 @@ const passport = require('passport')
 const Chat = require('../models/chat.js')
 const User = require('../models/user.js')
 const requireToken = passport.authenticate('bearer', { session: false })
+const requireAuthentication = require('../../lib/auth_middleware.js')
 
 
 const router = express.Router()
 
 
-router.get('/chats', requireToken,function(req,res){
+router.get('/chats',requireAuthentication(),function(req,res){
   const chat = Chat.find().populate('owner')
     chat.then(function(chats){
       return chats.map(function(chat){
@@ -23,8 +24,8 @@ router.get('/chats', requireToken,function(req,res){
     .catch(console.error)
 })
 
-router.post('/chats', requireToken, function(req,res){
-    req.body.owner = req.user.id
+router.post('/chats', requireAuthentication(), function(req,res){
+    req.body.owner = req.session.passport.user._id
     const chat = Chat.create(req.body)
       chat.then(function(newChat){
         return User.findById(newChat.owner)

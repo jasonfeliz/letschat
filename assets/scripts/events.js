@@ -1,5 +1,5 @@
 const api = require('./api.js')
-
+const helper = require('./helpers.js')
 
 const onGetChats = function(){
   api.getChatsApi()
@@ -21,6 +21,7 @@ const onGetChats = function(){
       chatlist.html(content)
 
     })
+    .then(helper.scrollToBottom)
     .catch(console.error)
 }
 
@@ -50,6 +51,8 @@ const onSignIn = function(event){
   api.signInApi(dataObj)
 
 }
+
+
 
 module.exports = {
   onGetChats,

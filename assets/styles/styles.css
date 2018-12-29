@@ -1,15 +1,102 @@
- body{
-   background-color: lavender;
- }
+li {
+  list-style: none;
+}
+ul {
+  padding: 0;
+  margin: 0;
+}
+.header {
+  border-bottom: solid 1px lavender;
+  padding-bottom: 25px;
+  color: #DF7367;
+}
 .container{
   max-width: 960px;
   width: 85%;
   margin: 0 auto;
+  text-align: center;
 
 }
 .chat-canvas {
   height: 500px;
   width: 75%;
   margin: 0 auto;
-  border: solid 1px #000;
+  border: solid 1px lavender;
+  overflow: scroll;
+  text-align: left;
+  border-radius: 4px;
+}
+#chat-list {
+  padding: 15px;
+
+}
+#chat-list > li {
+  padding: 5px 10px;
+  color: rgba(0,0,0,.7)
+}
+
+.chat-form {
+  width: 75%;
+  margin: 25px auto;
+  text-align: left;
+
+}
+
+.chat-form form {
+  display: flex;
+}
+.chat-form input[type="text"]{
+  width: 100%;
+  padding: 10px;
+  margin-right: 5px;
+  border: solid 1px lavender;
+  font-size: .9em;
+  border-radius: 4px;
+}
+
+.chat-form input[type="submit"] {
+  width: 150px;
+  background: #ab89f0;
+  padding: 10px;
+  border: solid 1px lavender;
+  cursor: pointer;
+  color: #fff;
+  border-radius: 4px;
+}
+.chat-form input[type="text"]:focus{
+  outline:none;
+}
+.form-container {
+  display: flex;
+
+}
+
+.form-container > div {
+  margin: 5% auto;
+  width:45%;
+}
+
+.form-container form {
+  display: flex;
+  flex-direction: column;
+  width: 350px;
+  margin: 0 auto;
+  padding: 50px;
+  border: solid 1px lavender;
+}
+
+.form-container form input {
+  margin: 10px 0;
+  padding: 7px 5px;
+  border: none;
+  border-bottom: solid 1px lavender;
+}
+
+.form-container form button {
+  margin-top: 10px;
+  background: #ab89f0;
+  padding: 7px;
+  border: none;
+  color: #fff;
+  cursor: pointer;
 }

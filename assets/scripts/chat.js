@@ -1,6 +1,5 @@
 const api = require('./api.js')
-
-
+const helper = require('./helpers.js')
 module.exports = function(){
   const socket = io.connect('http://localhost:3000');
   const chatlist = $('#chat-list')
@@ -15,7 +14,7 @@ module.exports = function(){
     }
     api.sendMessageApi(dataObj)
     .then(function(data){
-        socket.emit('send-message',{ message: data.chat.body, username:data.username } )
+        socket.emit('send-message',{ message: data.chat.body, username:"me" } )
     })
     .catch(console.error)
 
@@ -32,5 +31,7 @@ module.exports = function(){
             </li>
 
       `)
+      $('input[type="text"]').val('')
+      helper.scrollToBottom()
   })
 }

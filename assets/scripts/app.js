@@ -4,8 +4,8 @@ $(function(){
 
 
   chat()
+  $('#chat-list').ready(events.onGetChats)
 
-  events.onGetChats()
 
   $('#sign-up').on('submit',events.onSignUp)
   $('#sign-in').on('submit',events.onSignIn)
