@@ -8,13 +8,13 @@
 * Mongodb
 * Mongoose
 
-[x]Write list of packages to be installed
-[x]Write out project scope
-[x]planning
-[x]Data structure
-[x]User stories
-[x]ERD
-[x]Stretch goals
+* Write list of packages to be installed
+* Write out project scope
+* planning
+* Data structure
+* User stories
+* ERD
+* Stretch goals
 
 # Project Scope
 
@@ -23,18 +23,18 @@ The scope of the project is to build a simple chat app using modern web technolo
 
 # Plan
 Workflow plan is to work in 55 minute increments with 5 minute breaks
-[x]Install packages
-[x]Build out webpack configurations
-[x]Build the initial server
-[x]Build template engine - partials, views, etc...
-[x]Set up websocket connection
-[x]Set up Authentication with passport.js
-[x]Config database  — mongodb
-[x]Build models -> routes
-[x]Curl Scripts for testing
-[x]Build out front-end chat functionalities
-[x]Build UI - sign up/sign in
-[x]Style
+* Install packages
+* Build out webpack configurations
+* Build the initial server
+* Build template engine - partials, views, etc...
+* Set up websocket connection
+* Set up Authentication with passport.js
+* Config database  — mongodb
+* Build models -> routes
+* Curl Scripts for testing
+* Build out front-end chat functionalities
+* Build UI - sign up/sign in
+* Style
 []ReadMe
 []Configure for production
 []Refactor
