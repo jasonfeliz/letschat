@@ -8,14 +8,6 @@
 * Mongodb
 * Mongoose
 
-* Write list of packages to be installed
-* Write out project scope
-* planning
-* Data structure
-* User stories
-* ERD
-* Stretch goals
-
 # Project Scope
 
 The scope of the project is to build a simple chat app using modern web technologies like node, express and mongo db. The premise will be that users will be able to talk with each other in a group chat in real time. As I build this app, I will write down notes about the workflow.
@@ -35,9 +27,9 @@ Workflow plan is to work in 55 minute increments with 5 minute breaks
 * Build out front-end chat functionalities
 * Build UI - sign up/sign in
 * Style
-[]ReadMe
-[]Configure for production
-[]Refactor
+* ReadMe
+* Configure for production
+* Refactor
 
 Users
 * Username
