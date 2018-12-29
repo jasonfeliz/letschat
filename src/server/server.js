@@ -1,17 +1,27 @@
 const express = require('express')
-var cookieParser = require('cookie-parser');
+const cookieParser = require('cookie-parser');
 const passport = require('passport')
 const crypto = require('crypto')
-var session = require('express-session');
+const session = require('express-session');
 const webpack = require('webpack')
 const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
 const path = require('path')
 const port = 3000
 
+//session storage for express using mongodb
+//If you pass in an instance of the express-session module the MongoDBStore...
+//...class will enable you to store your Express sessions in MongoDB
+const MongoDBStore = require('connect-mongo')(session)
+// The MongoDBStore class has 3 required options:
+//
+//1. uri: a MongoDB connection string
+//2. databaseName: the MongoDB database to store sessions in
+//3. collection: the MongoDB collection to store sessions in
 
-
+//initialize the app/server
 const app = express()
+
 // set the template engine ejs
 app.set('view engine', 'ejs');
 
@@ -23,7 +33,6 @@ const auth = require('../../config/auth.js')
 
 //setup db connects
 const db = require('../../config/db.js')
-
 mongoose.Promise = global.Promise
 mongoose.connect(db,{
   useNewUrlParser: true
@@ -40,7 +49,6 @@ const webpackHotMiddleware = require('webpack-hot-middleware')(compiler)
 app.use(webpackDevMiddleware)
 app.use(webpackHotMiddleware)
 
-
 //allow static files in dist folder to be served.
 //in this case, it would be main-bundle.js which bundles up css/html/js files
 app.use(express.static("dist"))
@@ -52,11 +60,26 @@ app.use(bodyParser.json())
 // this parses requests sent by `$.ajax`, which use a different content type
 app.use(bodyParser.urlencoded({ extended: true }))
 
+//create new instance of MongoDBStore
+const store = new MongoDBStore({
+    url: db,
+    collection: 'mySessions'
+});
+
+// Catch errors
+store.on('error', function(error) {
+  assert.ifError(error);
+  assert.ok(false);
+});
+
 app.use(session({
   secret: crypto.randomBytes(16).toString('hex'),  //should always be a random generated string
   resave: false,
-  saveUninitialized: false
-  // cookie: { secure: true }
+  saveUninitialized: false,
+  store: store,
+  cookie: {
+    maxAge: 1000 * 60 * 60 * 24 * 7// 1 week
+  }
 }))
 
 app.use(auth)
