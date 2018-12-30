@@ -1,12 +1,11 @@
 # Technologies
-* NodeJs
-* Express
-* Webpack
-* Socket.io
-* jquery
+* NodeJs/Express -- server
+* Webpack -- module bundler
+* Socket.io -- tcp websocket library
+* Psssport.Js -- Authentication
+* jQuery
 * EJS template engine
-* Mongodb
-* Mongoose
+* Mongodb/Mongoose
 
 # Project Scope
 

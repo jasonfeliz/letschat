@@ -1,3 +1,6 @@
+body {
+  font-family: 'Nunito', sans-serif;
+}
 li {
   list-style: none;
 }
@@ -31,10 +34,15 @@ ul {
 
 }
 #chat-list > li {
-  padding: 5px 10px;
-  color: rgba(0,0,0,.7)
+  padding: 12px;
+  color: rgba(0,0,0,.7);
+  border-bottom: solid 1px rgba(0,0,0,.04);
+  margin-bottom: 10px;
+  position: relative;
 }
-
+#chat-list > li:last-child{
+  border:none;
+}
 .chat-form {
   width: 75%;
   margin: 25px auto;
@@ -99,4 +107,22 @@ ul {
   border: none;
   color: #fff;
   cursor: pointer;
+}
+
+.name {
+  font-weight: bold;
+}
+
+.delete-message {
+  position: absolute;
+  right: 10px;
+  cursor: pointer;
+  color: rgba(0,0,0,.25);
+  font-weight: 800;
+  -webkit-transition : all 0.5s;
+  transition : all 0.5s;
+}
+
+.delete-message:hover {
+  color: rgba(0,0,0,.5);
 }

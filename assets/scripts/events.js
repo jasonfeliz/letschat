@@ -6,15 +6,15 @@ const onGetChats = function(){
     .then(function(data){
       const chatlist = $('#chat-list')
       let content = ""
-      let username = ""
+      let span = ""
       const currentUser = data.currentUser
       data.chats.forEach(function(e){
-        username = currentUser == e.owner.username ? "me" : e.owner.username
+        span = currentUser == e.owner.username ? `<span class="delete-message" data-id="${e._id}">X</span>` : ''
         content += `<li>
                   <div>
-                    <span>${username}: </span>
+                    <span class="name">${e.owner.username}: </span>
                     <span>${e.body}</span>
-                    <span>x</span>
+                    ${span}
                   </div>
                 </li>`
       })

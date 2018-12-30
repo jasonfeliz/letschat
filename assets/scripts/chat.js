@@ -14,7 +14,8 @@ module.exports = function(){
     }
     api.sendMessageApi(dataObj)
     .then(function(data){
-        socket.emit('send-message',{ message: data.chat.body, username:"me" } )
+      console.log(data);
+        socket.emit('send-message',{ message: data.chat.body, username:data.username } )
     })
     .catch(console.error)
 
@@ -24,9 +25,9 @@ module.exports = function(){
     chatlist.append(`
             <li>
               <div>
-                <span>${data.username}: </span>
+                <span class="name">${data.username}: </span>
                 <span>${data.message}</span>
-                <span>x</span>
+                <span class="delete-message">X</span>
               </div>
             </li>
 
