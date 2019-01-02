@@ -1,5 +1,5 @@
 const passport = require('passport')
-const bcrypt = require('bcrypt')
+const bcrypt = require('bcryptjs')
 
 const BearerStrategy = require('passport-http-bearer').Strategy
 const LocalStrategy = require('passport-local').Strategy
