@@ -3,14 +3,13 @@ const helper = require('./helpers.js')
 module.exports = function(){
   const socket = io.connect('http://localhost:3000');
   const chatlist = $('#chat-list')
-
-
+  const message = $('input[name="chat-body"]')
+  const typing = $('.typing')
   //emit message to the server
   $('#chat-form').submit(function(event){
     event.preventDefault()
-    const message = $('input[name="chat-body"]').val()
     const dataObj = {
-      "body":message
+      "body":message.val()
     }
     api.sendMessageApi(dataObj)
     .then(function(data){
@@ -20,6 +19,18 @@ module.exports = function(){
     .catch(console.error)
 
   })
+
+  // message.on('keydown',function(){
+  //   socket.emit('typing')
+  // })
+  //
+  // socket.on('typing',function(){
+  //   if(message.val().length != 0){
+  //     typing.html('Someone cool is typing...')
+  //   }else{
+  //     typing.html('')
+  //   }
+  // })
 
   socket.on('send-message',function(data){
     chatlist.append(`

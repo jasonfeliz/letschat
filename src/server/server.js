@@ -106,6 +106,10 @@ io.on('connection', function(socket){
     io.sockets.emit('send-message', { message: data.message, username: data.username})
   })
 
+  socket.on('typing',function(){
+    io.sockets.emit('typing')
+  })
+
 
 
 })
