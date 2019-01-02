@@ -55,3 +55,8 @@ ERD
 * Let users see which other users in the group chat are online
 * Let users change their password
 * Let users delete their account
+
+## References
+Webpack - https://www.youtube.com/channel/UCuRGaS7uXLAIrCrxKN_Ke7g
+Socket.io - https://www.codemeals.com/node-js-tutorials/chat-app-with-node/
+PassportJs - https://blog.risingstack.com/node-hero-node-js-authentication-passport-js/ -- https://www.youtube.com/playlist?list=PLpPnRKq7eNW3Qm2OfoJ3Hyvf-36TulLDp
