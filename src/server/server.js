@@ -7,7 +7,15 @@ const webpack = require('webpack')
 const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
 const path = require('path')
-const port = 3000
+
+
+const dotenv = require('dotenv')
+dotenv.config()
+if(!process.env.KEY){
+  process.env.KEY = process.env.SECRET_KEY
+}
+
+
 
 //session storage for express using mongodb
 //If you pass in an instance of the express-session module the MongoDBStore...
@@ -88,6 +96,8 @@ app.use(passport.session())
 app.use(userRoutes)
 app.use(chatRoutes)
 app.use(indexRoutes)
+
+const port = process.env.PORT || 3000
 
 //server
 server = app.listen(port, function(){

@@ -9,4 +9,7 @@ const database = {
 
 const localDb = database.development
 
-module.exports = localDb
+const currentDb = process.env.MONGODB_URI || localDb
+
+
+module.exports = currentDb
