@@ -7,7 +7,7 @@ const webpack = require('webpack')
 const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
 const path = require('path')
-
+const cors = require('cors')
 
 const dotenv = require('dotenv')
 dotenv.config()
@@ -29,7 +29,7 @@ const MongoDBStore = require('connect-mongo')(session)
 
 //initialize the app/server
 const app = express()
-
+app.use(cors({ origin: process.env.CLIENT_ORIGIN || 'http://localhost:3000' }))
 // set the template engine ejs
 app.set('view engine', 'ejs');
 
