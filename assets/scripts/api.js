@@ -1,15 +1,15 @@
-
+const apiUrl = require('./api-url.js')
 const getChatsApi = function(){
   return $.ajax({
     method: "GET",
-    url: 'http://localhost:3000/chats'
+    url: `${apiUrl}/chats`
   })
 }
 
 const sendMessageApi = function(data){
   return $.ajax({
     method:"POST",
-    url: 'http://localhost:3000/chats',
+    url: `${apiUrl}/chats`,
     data: data
 
   })
@@ -18,7 +18,7 @@ const sendMessageApi = function(data){
 const signUpApi = function(data){
   return $.ajax({
     method:"POST",
-    url: 'http://localhost:3000/sign-up',
+    url: `${apiUrl}/sign-up`,
     data: data
   })
 }
@@ -26,7 +26,7 @@ const signUpApi = function(data){
 const signInApi = function(data){
   return $.ajax({
     method:"POST",
-    url: 'http://localhost:3000/sign-in',
+    url: `${apiUrl}/sign-in`,
     data: data
   })
 }

@@ -30,6 +30,7 @@ const MongoDBStore = require('connect-mongo')(session)
 //initialize the app/server
 const app = express()
 
+app.use(cors({ origin: process.env.CLIENT_ORIGIN || 'http://localhost:3000' }))
 // set the template engine ejs
 app.set('view engine', 'ejs');
 

@@ -1,5 +1,7 @@
 const chat = require('./chat.js')
 const events = require('./events.js')
+const apiUrl = require('./api-url.js')
+
 $(function(){
 
 

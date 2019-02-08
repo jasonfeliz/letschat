@@ -1,7 +1,10 @@
 const api = require('./api.js')
 const helper = require('./helpers.js')
+const apiUrl = require('./api-url.js')
+
+
 module.exports = function(){
-  const socket = io.connect('http://localhost:3000');
+  const socket = io.connect(apiUrl);
   const chatlist = $('#chat-list')
   const message = $('input[name="chat-body"]')
   const typing = $('.typing')
