@@ -17,6 +17,7 @@
     "connect-mongodb-session": "^2.0.6",
     "cookie-parser": "^1.4.3",
     "css-loader": "^2.0.2",
+    "dotenv": "^6.2.0",
     "ejs": "^2.6.1",
     "express": "^4.16.4",
     "express-session": "^1.15.6",
