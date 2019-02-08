@@ -4,7 +4,7 @@
   "description": "simple chat app",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon src/server/server.js",
+    "start": "webpack --config=config/webpack.dev.js",
     "build": "webpack-dev-server --config=config/webpack.dev.js",
     "server": "nodemon src/server/server.js"
   },
