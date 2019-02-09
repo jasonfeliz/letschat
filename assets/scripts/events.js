@@ -61,9 +61,19 @@ const onSignOut = function(event){
 
 }
 
+const onRemoveMessage = function(event){
+  const messageId = $(this).parent().data('id')
+  api.removeMessageApi(messageId)
+    .then((res) => {
+      $(this).parents('li').fadeOut()
+    })
+    .catch(console.error)
+}
+
 module.exports = {
   onGetChats,
   onSignUp,
   onSignIn,
-  onSignOut
+  onSignOut,
+  onRemoveMessage
 }

@@ -12,4 +12,6 @@ $(function(){
   $('#sign-up').on('submit',events.onSignUp)
   $('#sign-in').on('submit',events.onSignIn)
   $('#sign-out').on('click',events.onSignOut)
+
+  $('#chat-list').on('click', '.delete-message', events.onRemoveMessage)
 })
