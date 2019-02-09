@@ -33,7 +33,7 @@ const signInApi = function(data){
 
 const signOutApi = function(){
   return $.ajax({
-    method:"DELETE",
+    method:"POST",
     url: `${apiUrl}/sign-out`
   })
 }

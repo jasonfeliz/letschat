@@ -67,8 +67,9 @@ router.post('/sign-in', authenticateRequest, function(req, res){
       })
 })
 
-router.delete('/sign-out', function(req,res){
-  
-})
+router.post('/sign-out', function (req, res){
+  req.session.destroy();
+  res.send()
+});
 
 module.exports = router

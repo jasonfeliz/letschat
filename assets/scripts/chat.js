@@ -16,8 +16,7 @@ module.exports = function(){
     }
     api.sendMessageApi(dataObj)
     .then(function(data){
-      console.log(data);
-        socket.emit('send-message',{ message: data.chat.body, username:data.username } )
+        socket.emit('send-message',{ message: data.chat.body, chatId:data.chat._id, username:data.username, currentUser:data.currentUser} )
     })
     .catch(console.error)
 
@@ -36,12 +35,16 @@ module.exports = function(){
   // })
 
   socket.on('send-message',function(data){
+    const currentUser = ''
+    const span = ''
+    console.log(data)
+    // const span = currentUser == data.owner.username ? `<span class="delete-message">X</span>` : ''
     chatlist.append(`
             <li>
-              <div>
+              <div data-id="${data.chatId}">
                 <span class="name">${data.username}: </span>
                 <span>${data.message}</span>
-                <span class="delete-message">X</span>
+                ${span}
               </div>
             </li>
 

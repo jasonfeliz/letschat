@@ -35,6 +35,7 @@ router.post('/chats', requireAuthentication(), function(req,res){
         .then(function(newChat){
           res.status(201).json( {
               chat: newChat[0],
+              currentUser: req.user.username,
               username: newChat[1].username
             })
         })

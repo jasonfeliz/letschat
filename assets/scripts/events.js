@@ -9,9 +9,9 @@ const onGetChats = function(){
       let span = ""
       const currentUser = data.currentUser
       data.chats.forEach(function(e){
-        span = currentUser == e.owner.username ? `<span class="delete-message" data-id="${e._id}">X</span>` : ''
+        span = currentUser == e.owner.username ? `<span class="delete-message">X</span>` : ''
         content += `<li>
-                  <div>
+                  <div data-id="${e._id}">
                     <span class="name">${e.owner.username}: </span>
                     <span>${e.body}</span>
                     ${span}
@@ -55,6 +55,9 @@ const onSignIn = function(event){
 const onSignOut = function(event){
   event.preventDefault()
   api.signOutApi()
+    .then(() => {
+      location.reload();
+    })
 
 }
 

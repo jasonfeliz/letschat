@@ -114,7 +114,7 @@ io.on('connection', function(socket){
 
   //listen to send-message emmited from the client
   socket.on('send-message', function(data){
-    io.sockets.emit('send-message', { message: data.message, username: data.username})
+    io.sockets.emit('send-message', { message: data.message, username: data.username, chatId:data.chatId})
   })
 
   socket.on('typing',function(){
