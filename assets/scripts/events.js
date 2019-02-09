@@ -34,11 +34,13 @@ const onSignUp = function(event){
     dataObj[e.name] = e.value
   })
   api.signUpApi(dataObj)
-    .then(function(){
+    .then(function(res){
       $('input').val('')
-      $('#auth-messages').text('You have successfully signed up. Now log in so we can chat!')
+      helper.displayMessage('auth-messages','You have successfully signed up. Now log in so we can chat!')
     })
-    .catch(console.error)
+    .catch(() => {
+      helper.displayErrorMessage('auth-messages','Sign up unsuccessful. Try again!')
+    })
 }
 
 const onSignIn = function(event){
@@ -49,7 +51,6 @@ const onSignIn = function(event){
     dataObj[e.name] = e.value
   })
   api.signInApi(dataObj)
-
 }
 
 const onSignOut = function(event){

@@ -61,6 +61,7 @@ $('#chat-list').on('click', '.delete-message', function(event){
 
       `)
       helper.scrollToBottom()
+      helper.displayMessage('message-alert','New Message!')
   })
 
   socket.on('remove-message', function(data){

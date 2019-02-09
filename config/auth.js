@@ -22,7 +22,6 @@ const localStrategy = new LocalStrategy(
   function(username,password,done){
     User.findOne( {username:username}, function(err, user){
       if(!user){return done(null, false)}
-
       bcrypt.compare(password, user.hashedPassword, function(err,isValid){
         if(err){ return done(err)}
         if(!isValid){ return done(null,false)}

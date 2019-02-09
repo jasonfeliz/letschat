@@ -140,3 +140,8 @@ ul {
 .typing {
   color: #DF7367;
 }
+
+#message-alert {
+  width: 350px;
+  margin:0px auto 10px auto;
+}
