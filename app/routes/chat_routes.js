@@ -43,4 +43,23 @@ router.post('/chats', requireAuthentication(), function(req,res){
       .catch(console.error)
 })
 
+router.delete('/chats/:id', requireAuthentication(), function(req,res){
+  //cache current user id and messgae id
+  const currentUserId = req.session.passport.user._id
+  const messageId = req.params.id
+  //get chat data
+  Chat.findById(messageId)
+    .then((chat) => {
+      //get chat owner id
+      //compare owner id to current session user id
+      //if match, remove the chat
+      //else, send error message to client
+      chat.owner == currentUserId ? chat.remove() : res.status(401).json( { error: "Not Authorized to delete this message" } )
+    })
+    .then(res.status(200).json({message:"Message has been deleted"}))
+    .catch(console.error)
+
+
+})
+
 module.exports = router
