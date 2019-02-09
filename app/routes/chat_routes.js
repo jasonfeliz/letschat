@@ -54,10 +54,14 @@ router.delete('/chats/:id', requireAuthentication(), function(req,res){
       //compare owner id to current session user id
       //if match, remove the chat
       //else, send error message to client
-      chat.owner == currentUserId ? chat.remove() : res.status(401).json( { error: "Not Authorized to delete this message" } )
+      if(chat.owner == currentUserId){
+        chat.remove()
+        res.send("success")
+      }else{
+        res.send("failed")
+      }
     })
-    .then(res.status(200).json({message:"Message has been deleted"}))
-    .catch(console.error)
+    .catch(console.err)
 
 
 })
