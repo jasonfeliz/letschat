@@ -22,6 +22,18 @@ module.exports = function(){
 
   })
 
+//remove an individual message
+$('#chat-list').on('click', '.delete-message', function(event){
+    const messageId = $(this).parent().data('id')
+    const chatItem = $(this).parents('li')
+    api.removeMessageApi(messageId)
+      .then((res) => {
+        res == 'success' ? socket.emit('remove-message', {id: messageId}) : null
+      })
+      .catch(console.error)
+})
+
+
   // message.on('keydown',function(){
   //   socket.emit('typing')
   // })
@@ -36,9 +48,7 @@ module.exports = function(){
 
   socket.on('send-message',function(data){
     const currentUser = ''
-    const span = ''
-    console.log(data)
-    // const span = currentUser == data.owner.username ? `<span class="delete-message">X</span>` : ''
+    const span = `<span class="delete-message">X</span>`
     chatlist.append(`
             <li>
               <div data-id="${data.chatId}">
@@ -51,5 +61,9 @@ module.exports = function(){
       `)
       $('input[type="text"]').val('')
       helper.scrollToBottom()
+  })
+
+  socket.on('remove-message', function(data){
+    $(`div[data-id="${data}"]`).parent().fadeOut()
   })
 }

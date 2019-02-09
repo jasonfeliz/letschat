@@ -121,6 +121,8 @@ io.on('connection', function(socket){
     io.sockets.emit('typing')
   })
 
-
+  socket.on('remove-message',function(data){
+    io.sockets.emit('remove-message', data.id)
+  })
 
 })
