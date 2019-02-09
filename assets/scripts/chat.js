@@ -16,6 +16,7 @@ module.exports = function(){
     }
     api.sendMessageApi(dataObj)
     .then(function(data){
+        $('input[type="text"]').val('')
         socket.emit('send-message',{ message: data.chat.body, chatId:data.chat._id, username:data.username, currentUser:data.currentUser} )
     })
     .catch(console.error)
@@ -59,7 +60,6 @@ $('#chat-list').on('click', '.delete-message', function(event){
             </li>
 
       `)
-      $('input[type="text"]').val('')
       helper.scrollToBottom()
   })
 
