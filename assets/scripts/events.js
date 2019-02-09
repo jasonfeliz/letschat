@@ -52,10 +52,15 @@ const onSignIn = function(event){
 
 }
 
+const onSignOut = function(event){
+  event.preventDefault()
+  api.signOutApi()
 
+}
 
 module.exports = {
   onGetChats,
   onSignUp,
-  onSignIn
+  onSignIn,
+  onSignOut
 }

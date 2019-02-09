@@ -30,9 +30,17 @@ const signInApi = function(data){
     data: data
   })
 }
+
+const signOutApi = function(){
+  return $.ajax({
+    method:"DELETE",
+    url: `${apiUrl}/sign-out`
+  })
+}
 module.exports = {
   getChatsApi,
   sendMessageApi,
   signUpApi,
-  signInApi
+  signInApi,
+  signOutApi
 }

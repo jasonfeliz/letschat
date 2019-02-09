@@ -8,6 +8,9 @@ ul {
   padding: 0;
   margin: 0;
 }
+.main-header {
+  display: flex;
+}
 .header {
   border-bottom: solid 1px lavender;
   padding-bottom: 25px;
@@ -62,7 +65,8 @@ ul {
   border-radius: 4px;
 }
 
-.chat-form input[type="submit"] {
+.chat-form input[type="submit"],
+.logout-btn {
   width: 150px;
   background: #ab89f0;
   padding: 10px;
@@ -71,6 +75,11 @@ ul {
   color: #fff;
   border-radius: 4px;
 }
+
+.logout-btn {
+  margin-bottom:25px;
+}
+
 .chat-form input[type="text"]:focus{
   outline:none;
 }
