@@ -24,7 +24,7 @@ router.post('/sign-up',function(req, res){
     //create promise chain so we can handle each result
     Promise.resolve(credentials)
     //do some validations
-      .then(function(credentials){
+      .then(credentials => {
         if(!credentials || !credentials.password){
           res.status(400).json({message: "not valid credentials"})
         }
@@ -48,7 +48,7 @@ router.post('/sign-up',function(req, res){
       .then(function(user){
         res.status(201).json( {user: user.toObject()})
       })
-      .catch(console.error)
+      .catch(err => res.status(400).send(err))
 })
 
 router.post('/sign-in', authenticateRequest, function(req, res){
